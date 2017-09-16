@@ -10,7 +10,29 @@
 */
 //***************************************************************************//
 #include "Student.h"
+#include "utilities.h"
+#include <sstream>
 
+//-------------------------------------------------------------------
+// Student Constructor:
+// Constructor for the Student class, including parameters for creation.
+//-------------------------------------------------------------------
+Student::Student(){
+    string m_firstName = "unknown";					  // student's first name
+    string m_lastName = "unknown";					  // student's last name
+
+    float m_testgrades[MAXGRADES];                                    //test grade array
+    int m_testcount = 0;                                              //number of test grades, also used to iterate through the test_grade array
+    float m_testweight = .50;                                         //the grade weight for tests, used when computing average
+
+    float m_hwgrades[MAXGRADES];                                      //homework grade array
+    int m_hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
+    float m_hwweight = .50;                                           //the grade weight for homework, used when computing average
+
+    float m_average;                                                  //student's average
+    
+    reset();
+}
 //-------------------------------------------------------------------
 // setName:
 // Supply this function with a first name and a last name (strings).
@@ -41,8 +63,10 @@ string Student::getLastName() {
 // print:
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
-void Student::print(void) {
-    cout << m_lastName << ", " << m_firstName << endl;
+void Student::print(ofstream &outfile) {
+    outfile << m_lastName << ", " << m_firstName << endl;
+    outfile << "Number of Grades: " << m_testcount << " tests, " << m_hwcount << " homeworks." << endl;
+    outfile << "Average: " << m_average << endl << endl;
 }
 
 //-------------------------------------------------------------------
@@ -59,13 +83,6 @@ void Student::addTest(float grade) {
         cin >> grade;
     }
     m_testgrades[m_testcount++] = grade;
-    
-#ifdef DEBUG_ADDTEST
-    cout << "Test added: " << grade << endl;
-    cout << "Current test array: " << endl;
-    for(int i = 0; i < m_testcount; i++)
-        cout << m_testgrades[i] << endl;
-#endif
 }
 
 //-------------------------------------------------------------------
@@ -82,10 +99,6 @@ void Student::addHW(float grade) {
         cin >> grade;
     }
     m_hwgrades[m_hwcount++] = grade;
-    
-#ifdef DEBUG_ADDTEST
-    cout << "HW added: " << grade << endl;
-#endif
 }
 
 //-------------------------------------------------------------------
@@ -127,16 +140,9 @@ void Student::computeAverage(void) {
     for(int i = 0; i < m_hwcount; i++){
         hw_avg += m_hwgrades[i];
     }
-#ifdef DEBUG_AVG
-    cout << "test_avg: " << test_avg << " hw_avg: " << hw_avg << endl;
-#endif
             
     test_avg /= m_testcount;              //This will take the average of all of the test grades by dividing our sum by the number of test grades.
     hw_avg /= m_hwcount;
-    
-#ifdef DEBUG_AVG
-    cout << "test_avg: " << test_avg << " hw_avg: " << hw_avg << endl;
-#endif
     
     m_average = test_avg * m_testweight + hw_avg * m_hwweight; //The total average can be calculated using (test average * test weight) + (homework average * homework weight)
 }
@@ -155,18 +161,16 @@ float Student::getAverage(void) {
 // Completely resets the object's grade and weight inputs.
 //-------------------------------------------------------------------
 void Student::reset(void)  {
-    for(int i = m_testcount; i > 0; i--)
+    for(int i = MAXGRADES; i > 0; i--)
         m_testgrades[i] = 0;
     
-    for(int i = m_hwcount; i > 0; i--)
+    for(int i = MAXGRADES; i > 0; i--)
         m_hwgrades[i] = 0;
     
     m_testcount = 0;
     m_hwcount = 0;
     m_testweight = 0.50;
     m_hwweight = 0.50;
-    
-    cout << "Grades successfully reset." << endl;
 }
 
 //-------------------------------------------------------------------
@@ -183,4 +187,62 @@ int Student::getNumTests(void)  {
 //-------------------------------------------------------------------
 int Student::getNumHW(void)  {
     return m_hwcount;
+}
+
+//-------------------------------------------------------------------
+// removeTest:
+// Removes the most recent test.
+//-------------------------------------------------------------------
+void Student::removeTest(void)  {
+    m_testgrades[m_testcount] == 0;
+    m_testcount--;
+}
+
+//-------------------------------------------------------------------
+// removeHW:
+// Removes the most recent homework.
+//-------------------------------------------------------------------
+void Student::removeHW(void)  {
+    m_testgrades[m_hwcount] == 0;
+    m_hwcount--;
+}
+
+//-------------------------------------------------------------------
+// read:
+// Allows the student object to read input from a data stream.
+//-------------------------------------------------------------------
+void Student::read(ifstream &infile){
+    string fname, lname, input;             //Variables to read in the first and last name, as well as whatever input we want.
+    float grade;                            //Stores the most recent grade read
+    char next_char;                         //Used to throw away useless characters in the input file
+            
+    clearLeadingWhitespace(infile);         //First clear the leading whitespace
+
+    infile >> fname;
+    infile >> lname; 
+    setName(fname, lname);                  //Get the first and last name for the student, then input them into the object
+
+    infile.get(next_char);
+
+    clearLeadingWhitespace(infile);
+    getline(infile, input);                 //Get the next line to be input as test grades.
+    istringstream test_line(input);         //Create a string stream so that we can easily input each grade.
+    
+    while(!test_line.eof()){                //Until we reach the end of the string stream.
+        test_line >> grade;                 
+        addTest(grade);                     //Grab the next grade from the string stream and input it.
+    }
+    
+    removeTest();                           //We will need to remove the duplicate grade at the end (bug with stringstream).
+
+    clearLeadingWhitespace(infile);         //We can then do the exact same thing for the next line, which would be homeworks.
+    getline(infile, input);
+    istringstream hw_line(input);
+    while(!hw_line.eof()) {
+        hw_line >> grade;
+        addHW(grade);
+    }
+    
+    if(!infile.eof())                       //The last grade will not duplicate if it is at the end of the file.
+        removeHW();
 }

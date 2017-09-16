@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Student.h</itemPath>
+      <itemPath>StudentList.h</itemPath>
+      <itemPath>utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,7 +16,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Student.cpp</itemPath>
+      <itemPath>StudentList.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>utilities.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -42,7 +46,15 @@
       </item>
       <item path="Student.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="StudentList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StudentList.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utilities.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -69,7 +81,15 @@
       </item>
       <item path="Student.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="StudentList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StudentList.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utilities.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="utilities.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

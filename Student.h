@@ -20,28 +20,29 @@
 #define MAXGRADES 10                                                      //Currently all grade arrays have a max of 10 members.
 using namespace std;
 class Student {
-	string m_firstName = "unknown";					  // student's first name
-	string m_lastName = "unknown";					  // student's last name
+	string m_firstName;                                         // student's first name
+	string m_lastName;                                          // student's last name
         
-        float m_testgrades[MAXGRADES] = {0};                              //test grade array
-        int m_testcount = 0;                                              //number of test grades, also used to iterate through the test_grade array
-        float m_testweight = .50;                                         //the grade weight for tests, used when computing average
+        float m_testgrades[MAXGRADES];                              //test grade array
+        int m_testcount;                                            //number of test grades, also used to iterate through the test_grade array
+        float m_testweight;                                         //the grade weight for tests, used when computing average
         
-        float m_hwgrades[MAXGRADES] = {0};                                //homework grade array
-        int m_hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
-        float m_hwweight = .50;                                           //the grade weight for homework, used when computing average
+        float m_hwgrades[MAXGRADES];                                //homework grade array
+        int m_hwcount;                                              //number of homework grades, also used to iterate through the hw_grade array
+        float m_hwweight;                                           //the grade weight for homework, used when computing average
         
-        float m_average;                                                  //student's average
+        float m_average;                                            //student's average
         
 public:	
 	// prototypes for public interface methods, definitions are all located in Student.cpp, along with descriptions.
-
+    
+        Student();                                                  //student constructor
 	void setName(string, string);        
         
 	string getFirstName(void);
         string getLastName(void);
         
-        void print(void);
+        void print(ofstream &outfile);
         
         void addTest(float);
         void addHW(float);
@@ -56,5 +57,10 @@ public:
         
         int getNumTests(void);
         int getNumHW(void);
-};
 
+        void removeTest(void);
+        void removeHW(void);
+        
+        void read(ifstream &infile);
+        
+};
