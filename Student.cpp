@@ -233,7 +233,7 @@ void Student::read(ifstream &infile){
         addTest(grade);                     //Grab the next grade from the string stream and input it.
     }
     
-    removeTest();                           //We will need to remove the duplicate grade at the end (bug with stringstream).
+    removeTest();                           //We will need to remove the duplicate grade at the end (bug with using stringstream).
 
     clearLeadingWhitespace(infile);         //We can then do the exact same thing for the next line, which would be homeworks.
     getline(infile, input);
