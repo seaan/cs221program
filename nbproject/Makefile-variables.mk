@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=cs221_program__2
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/cs221_program__2
+CND_ARTIFACT_NAME_Debug=cs221program
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/cs221program
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=cs221program#2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/cs221program#2.tar
+CND_PACKAGE_NAME_Debug=cs221program.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/cs221program.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=cs221_program__2
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/cs221_program__2
+CND_ARTIFACT_NAME_Release=cs221program
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/cs221program
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=cs221program#2.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/cs221program#2.tar
+CND_PACKAGE_NAME_Release=cs221program.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/cs221program.tar
 #
 # include compiler specific variables
 #
