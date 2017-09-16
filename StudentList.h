@@ -17,7 +17,7 @@
 #define MAXSTUDENTS 25
 using namespace std;
 class StudentList {
-    Student arr_students[MAXSTUDENTS];                                  //array to hold all of our student objects
+    Student students[MAXSTUDENTS];                                      //array to hold all of our student objects
     int student_count;                                                  //variable to keep track of the number of students we have
 
 public:	

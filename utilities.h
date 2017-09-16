@@ -15,7 +15,10 @@
 #include <string>
 #include <fstream>
 using namespace std;
+//   I  need some simple utilities that end up being used a lot
+//   for example,
 
-                                                    //Simple utilities used commonly across the program.
-void clearToEol(istream &in);                       //Clears all characters until we reach the end of the line.
-void clearLeadingWhitespace(istream &in);           //Clears leading whitespace before our data
+//    - jettisoning extra characters until the end of a  line is reached
+
+void clearToEol(istream &in);
+void clearLeadingWhitespace(istream &in);
