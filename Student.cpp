@@ -18,18 +18,18 @@
 // Constructor for the Student class, including parameters for creation.
 //-------------------------------------------------------------------
 Student::Student(){
-    string m_firstName = "unknown";					  // student's first name
-    string m_lastName = "unknown";					  // student's last name
+    string firstName = "unknown";					  // student's first name
+    string lastName = "unknown";					  // student's last name
 
-    float m_testgrades[MAXGRADES];                                    //test grade array
-    int m_testcount = 0;                                              //number of test grades, also used to iterate through the test_grade array
-    float m_testweight = .50;                                         //the grade weight for tests, used when computing average
+    float testgrades[MAXGRADES];                                    //test grade array
+    int testcount = 0;                                              //number of test grades, also used to iterate through the test_grade array
+    float testweight = .50;                                         //the grade weight for tests, used when computing average
 
-    float m_hwgrades[MAXGRADES];                                      //homework grade array
-    int m_hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
-    float m_hwweight = .50;                                           //the grade weight for homework, used when computing average
+    float hwgrades[MAXGRADES];                                      //homework grade array
+    int hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
+    float hwweight = .50;                                           //the grade weight for homework, used when computing average
 
-    float m_average;                                                  //student's average
+    float average;                                                  //student's average
     
     reset();
 }
@@ -39,8 +39,8 @@ Student::Student(){
 // The student's name is set to these values
 //-------------------------------------------------------------------
 void Student::setName(string fn, string ln) {
-    m_firstName = fn;
-    m_lastName = ln;
+    firstName = fn;
+    lastName = ln;
 }
 
 //-------------------------------------------------------------------
@@ -48,7 +48,7 @@ void Student::setName(string fn, string ln) {
 // Returns a copy of the student's first name to the caller
 //-------------------------------------------------------------------
 string Student::getFirstName() {
-    return m_firstName;
+    return firstName;
 }
 
 //-------------------------------------------------------------------
@@ -56,7 +56,7 @@ string Student::getFirstName() {
 // Returns a copy of the student's last name to the caller
 //-------------------------------------------------------------------
 string Student::getLastName() {
-    return m_lastName;
+    return lastName;
 }
 
 //-------------------------------------------------------------------
@@ -64,9 +64,9 @@ string Student::getLastName() {
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
 void Student::print(ofstream &outfile) {
-    outfile << m_lastName << ", " << m_firstName << endl;
-    outfile << "Number of Grades: " << m_testcount << " tests, " << m_hwcount << " homeworks." << endl;
-    outfile << "Average: " << m_average << endl << endl;
+    outfile << lastName << ", " << firstName << endl;
+    outfile << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
+    outfile << "Average: " << average << endl << endl;
 }
 
 //-------------------------------------------------------------------
@@ -74,7 +74,7 @@ void Student::print(ofstream &outfile) {
 // Adds a test grade to the student's gradebook.
 //-------------------------------------------------------------------
 void Student::addTest(float grade) {
-    if(m_testcount > 9){
+    if(testcount > 9){
         cout << "Error! Can't enter more than 10 test grades!";
         return;
     }
@@ -82,7 +82,7 @@ void Student::addTest(float grade) {
         cout << "Error! Please enter a grade between 0 and 100!" << endl;
         cin >> grade;
     }
-    m_testgrades[m_testcount++] = grade;
+    testgrades[testcount++] = grade;
 }
 
 //-------------------------------------------------------------------
@@ -90,7 +90,7 @@ void Student::addTest(float grade) {
 // Adds a homework grade to the student's gradebook.
 //-------------------------------------------------------------------
 void Student::addHW(float grade) {
-    if(m_hwcount > 9){
+    if(hwcount > 9){
         cout << "Error! Can't enter more than 10 homework grades!";
         return;
     }
@@ -98,7 +98,7 @@ void Student::addHW(float grade) {
         cout << "Error! Please enter a grade between 0 and 100!" << endl;
         cin >> grade;
     }
-    m_hwgrades[m_hwcount++] = grade;
+    hwgrades[hwcount++] = grade;
 }
 
 //-------------------------------------------------------------------
@@ -110,7 +110,7 @@ void Student::weight_setTest(float weight) {
         cout << "Error! Please enter a number between 0 and 1!";
         cin >> weight;
     }
-    m_testweight = weight;
+    testweight = weight;
 }
 
 //-------------------------------------------------------------------
@@ -122,7 +122,7 @@ void Student::weight_setHW(float weight) {
         cout << "Error! Please enter a number between 0 and 1!";
         cin >> weight;
     }
-    m_hwweight = weight;
+    hwweight = weight;
 }
 
 //-------------------------------------------------------------------
@@ -133,18 +133,18 @@ void Student::computeAverage(void) {
     float test_avg = 0;                     //Variable to be used to calculate the test average for the student.
     float hw_avg = 0;                       //Variable to be used to calculate the homework average for the student.
     
-    for(int i = 0; i < m_testcount; i++){   //This will add up all of the members of the test grades array.
-        test_avg += m_testgrades[i];
+    for(int i = 0; i < testcount; i++){   //This will add up all of the members of the test grades array.
+        test_avg += testgrades[i];
     }
     
-    for(int i = 0; i < m_hwcount; i++){
-        hw_avg += m_hwgrades[i];
+    for(int i = 0; i < hwcount; i++){
+        hw_avg += hwgrades[i];
     }
             
-    test_avg /= m_testcount;              //This will take the average of all of the test grades by dividing our sum by the number of test grades.
-    hw_avg /= m_hwcount;
+    test_avg /= testcount;              //This will take the average of all of the test grades by dividing our sum by the number of test grades.
+    hw_avg /= hwcount;
     
-    m_average = test_avg * m_testweight + hw_avg * m_hwweight; //The total average can be calculated using (test average * test weight) + (homework average * homework weight)
+    average = test_avg * testweight + hw_avg * hwweight; //The total average can be calculated using (test average * test weight) + (homework average * homework weight)
 }
 
 //-------------------------------------------------------------------
@@ -153,7 +153,7 @@ void Student::computeAverage(void) {
 //-------------------------------------------------------------------
 float Student::getAverage(void) {
     computeAverage();
-    return m_average;
+    return average;
 }
 
 //-------------------------------------------------------------------
@@ -162,15 +162,15 @@ float Student::getAverage(void) {
 //-------------------------------------------------------------------
 void Student::reset(void)  {
     for(int i = MAXGRADES; i > 0; i--)
-        m_testgrades[i] = 0;
+        testgrades[i] = 0;
     
     for(int i = MAXGRADES; i > 0; i--)
-        m_hwgrades[i] = 0;
+        hwgrades[i] = 0;
     
-    m_testcount = 0;
-    m_hwcount = 0;
-    m_testweight = 0.50;
-    m_hwweight = 0.50;
+    testcount = 0;
+    hwcount = 0;
+    testweight = 0.50;
+    hwweight = 0.50;
 }
 
 //-------------------------------------------------------------------
@@ -178,7 +178,7 @@ void Student::reset(void)  {
 // Returns the current number of test grades.
 //-------------------------------------------------------------------
 int Student::getNumTests(void)  {
-    return m_testcount;
+    return testcount;
 }
 
 //-------------------------------------------------------------------
@@ -186,7 +186,7 @@ int Student::getNumTests(void)  {
 // Returns the current number of HW grades.
 //-------------------------------------------------------------------
 int Student::getNumHW(void)  {
-    return m_hwcount;
+    return hwcount;
 }
 
 //-------------------------------------------------------------------
@@ -194,8 +194,8 @@ int Student::getNumHW(void)  {
 // Removes the most recent test.
 //-------------------------------------------------------------------
 void Student::removeTest(void)  {
-    m_testgrades[m_testcount] == 0;
-    m_testcount--;
+    testgrades[testcount] == 0;
+    testcount--;
 }
 
 //-------------------------------------------------------------------
@@ -203,8 +203,8 @@ void Student::removeTest(void)  {
 // Removes the most recent homework.
 //-------------------------------------------------------------------
 void Student::removeHW(void)  {
-    m_testgrades[m_hwcount] == 0;
-    m_hwcount--;
+    testgrades[hwcount] == 0;
+    hwcount--;
 }
 
 //-------------------------------------------------------------------
