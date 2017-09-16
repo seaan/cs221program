@@ -1,4 +1,3 @@
-
 #include "StudentList.h"
 
 // ***                  CREATED USING NETBEANS IDE                       ***  //
@@ -32,7 +31,7 @@ void StudentList::addStudent(Student s){
         return;
     }
         
-    students[student_count++] = s;          //Add a new student, as well as iterate the count by 1.
+    arr_students[student_count++] = s;          //Add a new student, as well as iterate the count by 1.
 }
 
 //-------------------------------------------------------------------
@@ -41,7 +40,7 @@ void StudentList::addStudent(Student s){
 //-------------------------------------------------------------------
 void StudentList::print(ofstream &outfile){
     for(int i = 0; i < student_count; i++){
-        students[i].print(outfile);         //This loop will iterate through every student object that we have created and call it's print function.
+        arr_students[i].print(outfile);         //This loop will iterate through every student object that we have created and call it's print function.
     }
 }
 
@@ -52,7 +51,7 @@ void StudentList::print(ofstream &outfile){
 float StudentList::getClassAverage(void){
     float average = 0;
     for(int i = 0; i < student_count; i++){
-        average += students[i].getAverage(); //add upp all of the individual averages for each student
+        average += arr_students[i].getAverage(); //add upp all of the individual averages for each student
     }
     
     average /= student_count;                //find the average
@@ -66,7 +65,7 @@ float StudentList::getClassAverage(void){
 //-------------------------------------------------------------------
 void StudentList::reset(void){
     for(int i = 0; i < MAXSTUDENTS; i++){
-        students[i].reset();                //will reset every student object
+        arr_students[i].reset();                //will reset every student object
     }
 }
 
