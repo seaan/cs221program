@@ -32,6 +32,7 @@ StudentList::~StudentList(){
 //-------------------------------------------------------------------
 bool StudentList::add(Student s){
     Node *pNew;
+    Node *q;
     pNew = new Node(s);
     if(!pNew){
         cout << "Error in dynamic allocation!" << endl;
@@ -40,10 +41,22 @@ bool StudentList::add(Student s){
     
     if(isEmpty())
         first = pNew;
-    else
-        last->next = pNew;
-    
-    last = pNew;
+    else{
+        q = first;
+        while(q && q->item > pNew->item){
+            q = q->next;
+        }
+        
+        if(!q){
+            pNew->before = last->before;
+            last = pNew; //i think this works
+        }
+        else{
+            pNew->before = q->before;
+            pNew->next = q;
+            q->before = pNew;   
+        }
+    }
     student_count++;
     return true;
 }
