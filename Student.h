@@ -62,4 +62,7 @@ public:
         
         void read(ifstream &infile);                              //reads in the information for a student object from an input file stream
         
+        bool operator==(Student s);
+        bool operator>(Student s);
+        bool operator<(Student s);
 };

@@ -246,3 +246,37 @@ void Student::read(ifstream &infile){
     if(!infile.eof())                       //The last grade will not duplicate if it is at the end of the file.
         removeHW();
 }
+
+bool Student::operator==(Student s){
+    if(lastName == s.lastName && firstName == s.firstName)
+        return true;
+    return false;
+}
+
+bool Student::operator>(Student s){
+    if(lastName > s.lastName)
+        return true;
+    else if(lastName == s.lastName){
+        if(firstName > s.firstName)
+            return true;
+        
+        return false;
+    }
+    else
+        return false;
+}
+
+bool Student::operator<(Student s){
+    if(lastName < s.lastName)
+        return true;
+    else if(lastName == s.lastName){
+        if(firstName < s.firstName)
+            return true;
+        
+        return false;
+    }
+    else
+        return false;
+}
+
+
