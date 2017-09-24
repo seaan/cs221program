@@ -41,15 +41,15 @@ int main(void){
     cin >> path;
     outfile.open(path.c_str());
     
-    while(!infile.eof() && !list.isFull()){         //until we've reached the end of the file or the list is full
+    while(!infile.eof()){         //until we've reached the end of the file or the list is full
         Student s;                                  //we will want to have a new student object for every time this loop is complete, so we can add the next to our list
         s.read(infile);                             //this will read in the details for the student object s from the input file
         
-        list.addStudent(s);                         //after we've read in the details we can store the student in studentlist
+        list.add(s);                         //after we've read in the details we can store the student in studentlist
     }
     
     outfile << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
-    outfile << "OVERALL CLASS AVERAGE:" << list.getClassAverage() << endl << endl;
+    outfile << "OVERALL CLASS AVERAGE:" << list.getAverage() << endl << endl;
 
     list.print(outfile);                            //This will print each student object we created, listing the name, # of grades, and average
     

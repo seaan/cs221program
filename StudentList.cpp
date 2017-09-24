@@ -18,20 +18,34 @@
 //-------------------------------------------------------------------
 StudentList::StudentList(){
     student_count = 0;
-    reset();                                //Calls a reset on all of the student objects to make sure everything is zero.
+    first = NULL;
+    current = NULL;
+}
+
+StudentList::~StudentList(){
+    clear();
 }
 
 //-------------------------------------------------------------------
 // addStudent:
 // Adds a student object to our array of students.
 //-------------------------------------------------------------------
-void StudentList::addStudent(Student s){
-    if(student_count == MAXSTUDENTS){
-        cout << "Error! Max number of students reached!" << endl;
-        return;
+bool StudentList::add(Student s){
+    Node *pNew;
+    pNew = new Node(s);
+    if(!pNew){
+        cout << "Error in dynamic allocation!" << endl;
+        return false;
     }
-        
-    arr_students[student_count++] = s;          //Add a new student, as well as iterate the count by 1.
+    
+    if(isEmpty())
+        first = pNew;
+    else
+        last->next = pNew;
+    
+    last = pNew;
+    student_count++;
+    return true;
 }
 
 //-------------------------------------------------------------------
@@ -39,8 +53,10 @@ void StudentList::addStudent(Student s){
 // Iterates through each student object and calls their print function.
 //-------------------------------------------------------------------
 void StudentList::print(ofstream &outfile){
-    for(int i = 0; i < student_count; i++){
-        arr_students[i].print(outfile);         //This loop will iterate through every student object that we have created and call it's print function.
+    Node *p = first;
+    while(p){
+        p->item.print(outfile);
+        p = p->next;
     }
 }
 
@@ -48,10 +64,12 @@ void StudentList::print(ofstream &outfile){
 // Student Constructor:
 // Constructor for the Student class, including parameters for creation.
 //-------------------------------------------------------------------
-float StudentList::getClassAverage(void){
+float StudentList::getAverage(void){
     float average = 0;
-    for(int i = 0; i < student_count; i++){
-        average += arr_students[i].getAverage(); //add upp all of the individual averages for each student
+    Node *p = first;
+    while(p){
+        average += p->item.getAverage();
+        p = p->next;
     }
     
     average /= student_count;                //find the average
@@ -63,21 +81,26 @@ float StudentList::getClassAverage(void){
 // reset:
 // Iterates through all of the student objects and resets each one.
 //-------------------------------------------------------------------
-void StudentList::reset(void){
-    for(int i = 0; i < MAXSTUDENTS; i++){
-        arr_students[i].reset();                //will reset every student object
+void StudentList::clear(void){
+    Node *p, *q;
+    p = first;
+    while(p){
+        q = p->next;
+        delete p;
+        p = q;
     }
+    first = NULL;
+    last = NULL;
 }
 
-//-------------------------------------------------------------------
-// isFull:
-// Checks to see if our list is full.
-//-------------------------------------------------------------------
-bool StudentList::isFull(void){
-    if(student_count >= MAXSTUDENTS)
+
+bool StudentList::isEmpty(void){
+    if(!(first && last))
         return true;
-    return false;
+    else
+        return false;
 }
+
 
 //-------------------------------------------------------------------
 // getSize:

@@ -1,6 +1,5 @@
-
-FINAL GRADEBOOK for [3] STUDENTS:
-OVERALL CLASS AVERAGE:82.3
+FINAL GRADEBOOK for [4] STUDENTS:
+OVERALL CLASS AVERAGE:80.475
 
 Allen, Beth
 Number of Grades: 3 tests, 5 homeworks.
@@ -13,4 +12,8 @@ Average: 75.4
 Albedin, Reza
 Number of Grades: 3 tests, 4 homeworks.
 Average: 80
+
+Widmier, Sean
+Number of Grades: 3 tests, 5 homeworks.
+Average: 75
 

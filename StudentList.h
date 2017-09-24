@@ -16,20 +16,37 @@
 
 #define MAXSTUDENTS 25
 using namespace std;
-class StudentList {
-    Student arr_students[MAXSTUDENTS];                                  //array to hold all of our student objects
-    int student_count;                                                  //variable to keep track of the number of students we have
 
-public:	
-	// prototypes for public interface methods, definitions are all located in Student.cpp, along with descriptions.
+class Node {
+public:
+    Student item;
+    Node *next;
+    Node *before;
+    Node(const Student &studIn){
+        item = studIn;
+        next = NULL;
+        before = NULL;
+    }
+};
+
+class StudentList {
+    Node *first;
+    Node *last;
+    Node *current;
     
-        StudentList();                                                  //student constructor
-        void addStudent(Student s);                                     //add a new student object to the list
-        void print(ofstream &outfile);                                  //calls print for all student objects
-        float getClassAverage(void);                                    //returns the class average
-        void reset(void);                                               //resets each student object
-        bool isFull(void);                                              //returns if the list is full
-        int getSize(void);                                              //returns the size of the list
+    int student_count;                                                  //variable to keep track of the number of students we have
+public:	
+    //Constructor and Destructor
+    StudentList();                                                  //student constructor
+    ~StudentList();
+
+    //public member functions
+    bool add(Student s);                                     //add a new student object to the list
+    void print(ofstream &outfile);                           //calls print for all student objects
+    float getAverage(void);                                  //returns the class average
+    void clear(void);                                        //resets each student object
+    bool isEmpty(void);
+    int getSize(void);                                              //returns the size of the list
 };
 
 #endif /* STUDENTLIST_H */
