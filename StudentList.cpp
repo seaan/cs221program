@@ -166,7 +166,12 @@ bool StudentList::searchList(string n_first, string n_last){
     }
     else if (q->item > s) {
         cout << "Student not found, printing two nearest: " << endl << endl;
-        q->before->item.print();
+        
+        if(q->before)
+            q->before->item.print();
+        else
+            last->item.print();
+        
         q->item.print();
     }
     
@@ -176,3 +181,40 @@ bool StudentList::searchList(string n_first, string n_last){
     return true;
 }
 
+//-------------------------------------------------------------------
+// deleteStudent:
+// Searches for the appropriate student, if the student is found, delete their information.
+//-------------------------------------------------------------------
+
+bool StudentList::deleteStudent(string n_first, string n_last){
+    Node *q;
+    Student s;
+    
+    n_first = allCaps(n_first);
+    n_last = allCaps(n_last);
+    s.setName(n_first,n_last);
+    
+    q = first;
+    while(q && !(q->item == s))
+        q = q->after;
+    
+    if(!q)
+        return false;
+    else if(!q->after){
+        q->before->after = NULL;
+        last = q->before;
+    }
+    else if(!q->before){
+        q->after->before = NULL;
+        first = q->after;
+    }
+    else{
+        q->before->after = q->after;
+        q->after->before = q->before;
+    }
+    
+    cout << "Student deleted: " << q->item.getLastName() << ", " << q->item.getFirstName() << endl;
+    student_count--;
+    delete q;
+    return true;
+}

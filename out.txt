@@ -1,9 +1,5 @@
-FINAL GRADEBOOK for [5] STUDENTS:
-OVERALL CLASS AVERAGE:66.05
-
-AARON, HANK
-Number of Grades: 4 tests, 5 homeworks.
-Average: 79.875
+FINAL GRADEBOOK for [3] STUDENTS:
+OVERALL CLASS AVERAGE:59.0833
 
 JONES, CHIPPER
 Number of Grades: 5 tests, 5 homeworks.
@@ -16,8 +12,4 @@ Average: 56.25
 WIDMIER, AARON
 Number of Grades: 1 tests, 1 homeworks.
 Average: 75
-
-WIDMIER, SEAN
-Number of Grades: 4 tests, 4 homeworks.
-Average: 73.125
 

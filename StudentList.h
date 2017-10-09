@@ -49,6 +49,7 @@ public:
     bool isEmpty(void);
     int getSize(void);                                       //returns the size of the list
     bool searchList(string n_first, string n_last);
+    bool deleteStudent(string n_first, string n_last);
 };
 
 #endif /* STUDENTLIST_H */

@@ -67,4 +67,5 @@ public:
     bool operator==(Student s);
     bool operator>(Student s);
     bool operator<(Student s);
+    
 };

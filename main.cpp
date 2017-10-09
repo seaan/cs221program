@@ -20,6 +20,7 @@
 
 #include "Student.h"
 #include "StudentList.h"
+#include "utilities.h"
 
 using namespace std;
 
@@ -50,22 +51,41 @@ int main(void){
         list.add(s);                         //after we've read in the details we can store the student in studentlist
     }
     
+    cout << "Gradebook created." << endl << endl;
+    
+    char answer = 'y';
+    while(answer == 'y' || answer == 'Y'){
+        
+        cout << "Would you like to search for a student? Y/N" << endl;;
+        cin >> answer;
+        if(answer == 'y' || answer == 'Y') {
+            cout << "Enter the name of the student: " << endl;
+            cin >> first_name >> last_name;
+            list.searchList(first_name, last_name);
+        }
+        
+        cout << "Would you like to delete a student? Y/N" << endl;
+        cin >> answer;
+        if (answer == 'y' || answer == 'Y') {
+            cout << "Enter the name of the student: " << endl;
+            cin >> first_name >> last_name;
+            list.deleteStudent(first_name, last_name);
+        }
+        
+        cout << "Would you like to continue? Y/N" << endl;
+        cin >> answer;
+    }
+    
+        
     outfile << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
     outfile << "OVERALL CLASS AVERAGE:" << list.getAverage() << endl << endl;
     
-    cout << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
+    cout << endl << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
     cout << "OVERALL CLASS AVERAGE:" << list.getAverage() << endl << endl;
 
     list.print(outfile);                            //This will print each student object we created, listing the name, # of grades, and average
     
-    /*cout << "You may now search the list, enter a first name of the student you wish to find: " << endl;
-    cin >> first_name;
     
-    cout << "Last name: " << endl;
-    cin >> last_name;
-    
-    list.searchList(first_name, last_name);*/
-    list.searchList("z","z");
-    cout << "The program has completed. It will now exit." << endl;
+    cout << endl << "The program has completed. It will now exit." << endl;
     return 0;
 }

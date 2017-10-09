@@ -29,7 +29,7 @@ Student::Student(){
     int hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
     float hwweight = .50;                                           //the grade weight for homework, used when computing average
 
-    float average;                                                  //student's average
+    float average = 0;                                                  //student's average
     
     reset();
 }
@@ -64,6 +64,7 @@ string Student::getLastName() {
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
 void Student::print(void) {
+    computeAverage();
     cout << lastName << ", " << firstName << endl;
     cout << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
     cout << "Average: " << average << endl << endl;
@@ -74,6 +75,7 @@ void Student::print(void) {
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
 void Student::filePrint(ofstream &outfile) {
+    computeAverage();
     outfile << lastName << ", " << firstName << endl;
     outfile << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
     outfile << "Average: " << average << endl << endl;
