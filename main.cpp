@@ -33,13 +33,15 @@ int main(void){
 
     cout << "This is a basic grade calculator for multiple student objects. An input file will be used for data, and an output file shall be written to." << endl << endl;
     
-    cout << "Please type an input file path: " << endl;
+    /*cout << "Please type an input file path: " << endl;
     cin >> path;
-    infile.open(path.c_str());                      //after prompting the user for the path, open the input file using that path
+    infile.open(path.c_str());                      //after prompting the user for the path, open the input file using that path*/
+    infile.open("test.txt");
     
-    cout << "Please type an output file path: " << endl;
+    /*cout << "Please type an output file path: " << endl;
     cin >> path;
-    outfile.open(path.c_str());
+    outfile.open(path.c_str());*/
+    outfile.open("out.txt");
     
     while(!infile.eof()){         //until we've reached the end of the file or the list is full
         Student s;                                  //we will want to have a new student object for every time this loop is complete, so we can add the next to our list
@@ -50,9 +52,20 @@ int main(void){
     
     outfile << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
     outfile << "OVERALL CLASS AVERAGE:" << list.getAverage() << endl << endl;
+    
+    cout << "FINAL GRADEBOOK for [" << list.getSize() << "] STUDENTS:" << endl;          
+    cout << "OVERALL CLASS AVERAGE:" << list.getAverage() << endl << endl;
 
     list.print(outfile);                            //This will print each student object we created, listing the name, # of grades, and average
     
+    /*cout << "You may now search the list, enter a first name of the student you wish to find: " << endl;
+    cin >> first_name;
+    
+    cout << "Last name: " << endl;
+    cin >> last_name;
+    
+    list.searchList(first_name, last_name);*/
+    list.searchList("z","z");
     cout << "The program has completed. It will now exit." << endl;
     return 0;
 }

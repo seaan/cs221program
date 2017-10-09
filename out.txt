@@ -1,19 +1,23 @@
-FINAL GRADEBOOK for [4] STUDENTS:
-OVERALL CLASS AVERAGE:80.475
+FINAL GRADEBOOK for [5] STUDENTS:
+OVERALL CLASS AVERAGE:66.05
 
-Allen, Beth
-Number of Grades: 3 tests, 5 homeworks.
-Average: 91.5
+AARON, HANK
+Number of Grades: 4 tests, 5 homeworks.
+Average: 79.875
 
-Davis, Joe
-Number of Grades: 3 tests, 5 homeworks.
-Average: 75.4
+JONES, CHIPPER
+Number of Grades: 5 tests, 5 homeworks.
+Average: 46
 
-Albedin, Reza
-Number of Grades: 3 tests, 4 homeworks.
-Average: 80
+SMITH, JOHN
+Number of Grades: 4 tests, 5 homeworks.
+Average: 56.25
 
-Widmier, Sean
-Number of Grades: 3 tests, 5 homeworks.
+WIDMIER, AARON
+Number of Grades: 1 tests, 1 homeworks.
 Average: 75
+
+WIDMIER, SEAN
+Number of Grades: 4 tests, 4 homeworks.
+Average: 73.125
 

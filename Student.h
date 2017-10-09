@@ -42,7 +42,8 @@ public:
     string getFirstName(void);                                //returns the first name of the student object
     string getLastName(void);                                 //returns the last name
 
-    void print(ofstream &outfile);                            //prints out a grade report for an individual student, including last name, first name, number of tests, and grade average
+    void print(void);
+    void filePrint(ofstream &outfile);                            //prints out a grade report for an individual student, including last name, first name, number of tests, and grade average
 
     void addTest(float);                                      //adds a test grade to the student object's grades
     void addHW(float);                                        //adds a homework grade

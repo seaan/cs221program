@@ -63,7 +63,17 @@ string Student::getLastName() {
 // print:
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
-void Student::print(ofstream &outfile) {
+void Student::print(void) {
+    cout << lastName << ", " << firstName << endl;
+    cout << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
+    cout << "Average: " << average << endl << endl;
+}
+
+//-------------------------------------------------------------------
+// print:
+// Prints the student's data to the standard output stream, formatted
+//-------------------------------------------------------------------
+void Student::filePrint(ofstream &outfile) {
     outfile << lastName << ", " << firstName << endl;
     outfile << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
     outfile << "Average: " << average << endl << endl;

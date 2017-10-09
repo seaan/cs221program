@@ -42,3 +42,10 @@ void readArray(istream &in, float numbers[], int &count, int capacity){
 	}
 	if (peekC != EOF) clearToEol(in);
 }
+
+string allCaps(string str){
+    for(int i = 0; i < str.length(); i++)
+        str[i] = toupper(str[i]);
+    
+    return str;
+}

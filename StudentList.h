@@ -11,6 +11,7 @@
 //***************************************************************************//
 
 #include "Student.h"
+#include "utilities.h"
 #ifndef STUDENTLIST_H
 #define STUDENTLIST_H
 
@@ -20,11 +21,11 @@ using namespace std;
 class Node {
 public:
     Student item;
-    Node *next;
+    Node *after;
     Node *before;
     Node(const Student &studIn){
         item = studIn;
-        next = NULL;
+        after = NULL;
         before = NULL;
     }
 };
@@ -46,7 +47,8 @@ public:
     float getAverage(void);                                  //returns the class average
     void clear(void);                                        //resets each student object
     bool isEmpty(void);
-    int getSize(void);                                              //returns the size of the list
+    int getSize(void);                                       //returns the size of the list
+    bool searchList(string n_first, string n_last);
 };
 
 #endif /* STUDENTLIST_H */
