@@ -1,15 +1,19 @@
-FINAL GRADEBOOK for [3] STUDENTS:
-OVERALL CLASS AVERAGE:59.0833
+FINAL GRADEBOOK for [4] STUDENTS:
+OVERALL CLASS AVERAGE:63.8472
+
+JONES, ANDRUW
+Number of Grades: 9 tests, 9 homeworks.
+Average: 50
 
 JONES, CHIPPER
-Number of Grades: 5 tests, 5 homeworks.
-Average: 46
+Number of Grades: 1 tests, 1 homeworks.
+Average: 100
 
 SMITH, JOHN
-Number of Grades: 4 tests, 5 homeworks.
-Average: 56.25
+Number of Grades: 9 tests, 9 homeworks.
+Average: 38.3889
 
-WIDMIER, AARON
-Number of Grades: 1 tests, 1 homeworks.
-Average: 75
+THOMAS, JOSH
+Number of Grades: 9 tests, 9 homeworks.
+Average: 67
 
