@@ -29,7 +29,7 @@ Student::Student(){
     int hwcount = 0;                                                //number of homework grades, also used to iterate through the hw_grade array
     float hwweight = .50;                                           //the grade weight for homework, used when computing average
 
-    float average;                                                  //student's average
+    float average = 0;                                                  //student's average
     
     reset();
 }
@@ -63,7 +63,19 @@ string Student::getLastName() {
 // print:
 // Prints the student's data to the standard output stream, formatted
 //-------------------------------------------------------------------
-void Student::print(ofstream &outfile) {
+void Student::print(void) {
+    computeAverage();
+    cout << lastName << ", " << firstName << endl;
+    cout << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
+    cout << "Average: " << average << endl << endl;
+}
+
+//-------------------------------------------------------------------
+// print:
+// Prints the student's data to the standard output stream, formatted
+//-------------------------------------------------------------------
+void Student::filePrint(ofstream &outfile) {
+    computeAverage();
     outfile << lastName << ", " << firstName << endl;
     outfile << "Number of Grades: " << testcount << " tests, " << hwcount << " homeworks." << endl;
     outfile << "Average: " << average << endl << endl;
@@ -174,7 +186,7 @@ void Student::reset(void)  {
 }
 
 //-------------------------------------------------------------------
-// getNumHW:
+// getNumTests:
 // Returns the current number of test grades.
 //-------------------------------------------------------------------
 int Student::getNumTests(void)  {
@@ -246,3 +258,49 @@ void Student::read(ifstream &infile){
     if(!infile.eof())                       //The last grade will not duplicate if it is at the end of the file.
         removeHW();
 }
+
+//-------------------------------------------------------------------
+// operator==:
+// Compare operator that tells us if the names of the students are equal.
+//-------------------------------------------------------------------
+bool Student::operator==(Student s){
+    if(lastName == s.lastName && firstName == s.firstName)
+        return true;
+    return false;
+}
+
+//-------------------------------------------------------------------
+// operator>:
+// Compare operator that tells us if the name of the student is greater than another.
+//-------------------------------------------------------------------
+bool Student::operator>(Student s){
+    if(lastName > s.lastName)
+        return true;
+    else if(lastName == s.lastName){
+        if(firstName > s.firstName)
+            return true;
+        
+        return false;
+    }
+    else
+        return false;
+}
+
+//-------------------------------------------------------------------
+// operator<:
+// Compare operator that tells us if the name of the student is greater than another.
+//-------------------------------------------------------------------
+bool Student::operator<(Student s){
+    if(lastName < s.lastName)
+        return true;
+    else if(lastName == s.lastName){
+        if(firstName < s.firstName)
+            return true;
+        
+        return false;
+    }
+    else
+        return false;
+}
+
+

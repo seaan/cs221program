@@ -1,16 +1,19 @@
+FINAL GRADEBOOK for [4] STUDENTS:
+OVERALL CLASS AVERAGE:63.8472
 
-FINAL GRADEBOOK for [3] STUDENTS:
-OVERALL CLASS AVERAGE:82.3
+JONES, ANDRUW
+Number of Grades: 9 tests, 9 homeworks.
+Average: 50
 
-Allen, Beth
-Number of Grades: 3 tests, 5 homeworks.
-Average: 91.5
+JONES, CHIPPER
+Number of Grades: 1 tests, 1 homeworks.
+Average: 100
 
-Davis, Joe
-Number of Grades: 3 tests, 5 homeworks.
-Average: 75.4
+SMITH, JOHN
+Number of Grades: 9 tests, 9 homeworks.
+Average: 38.3889
 
-Albedin, Reza
-Number of Grades: 3 tests, 4 homeworks.
-Average: 80
+THOMAS, JOSH
+Number of Grades: 9 tests, 9 homeworks.
+Average: 67
 

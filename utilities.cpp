@@ -26,3 +26,26 @@ void clearLeadingWhitespace(istream &in) {
     }
 
 }
+
+void readArray(istream &in, float numbers[], int &count, int capacity){
+	// reads numbers into an array until the capacity is reached or the end of line or end of file is reached.
+	// If the capacity is reached before the end of the line, the remaining characters are jettisoned.
+	char peekC;  // peek ahead character
+
+	count = 0;
+	peekC = in.peek();
+	while (count < capacity && peekC != '\n' && peekC != EOF)
+	{
+		in >> numbers[count];
+		count++;
+		peekC = in.peek();
+	}
+	if (peekC != EOF) clearToEol(in);
+}
+
+string allCaps(string str){
+    for(int i = 0; i < str.length(); i++)
+        str[i] = toupper(str[i]);
+    
+    return str;
+}

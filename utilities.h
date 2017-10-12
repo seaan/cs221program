@@ -19,3 +19,5 @@ using namespace std;
                                                     //Simple utilities used commonly across the program.
 void clearToEol(istream &in);                       //Clears all characters until we reach the end of the line.
 void clearLeadingWhitespace(istream &in);           //Clears leading whitespace before our data
+void readArray(istream &in, float numbers[], int &count, int capacity);
+string allCaps(string str);
