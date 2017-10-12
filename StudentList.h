@@ -20,36 +20,35 @@ using namespace std;
 
 class Node {
 public:
-    Student item;
+    Student item;                                           //each node will keep the info of a student
     Node *after;
-    Node *before;
+    Node *before;                                           //as well as a link to the nodes before and after it
     Node(const Student &studIn){
-        item = studIn;
+        item = studIn;                                      //store the inputted student information
         after = NULL;
         before = NULL;
     }
 };
 
 class StudentList {
-    Node *first;
-    Node *last;
-    Node *current;
+    Node *first;                                             //keep track of the first node in the list
+    Node *last;                                              //also keep track of the last node                                          
     
-    int student_count;                                                  //variable to keep track of the number of students we have
+    int student_count;                                       //variable to keep track of the number of students we have
 public:	
     //Constructor and Destructor
-    StudentList();                                                  //student constructor
-    ~StudentList();
+    StudentList();                                           //student constructor
+    ~StudentList();                                          //student deconstructor
 
     //public member functions
     bool add(Student s);                                     //add a new student object to the list
     void print(ofstream &outfile);                           //calls print for all student objects
     float getAverage(void);                                  //returns the class average
     void clear(void);                                        //resets each student object
-    bool isEmpty(void);
+    bool isEmpty(void);                                      //check if the list is empty
     int getSize(void);                                       //returns the size of the list
-    bool searchList(string n_first, string n_last);
-    bool deleteStudent(string n_first, string n_last);
+    bool searchList(string n_first, string n_last);          //searches the list for a student with the inputted name, if not found print two nearest
+    bool deleteStudent(string n_first, string n_last);       //searches the list for a student with the inputted name, if found delete
 };
 
 #endif /* STUDENTLIST_H */

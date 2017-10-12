@@ -186,7 +186,7 @@ void Student::reset(void)  {
 }
 
 //-------------------------------------------------------------------
-// getNumHW:
+// getNumTests:
 // Returns the current number of test grades.
 //-------------------------------------------------------------------
 int Student::getNumTests(void)  {
@@ -259,12 +259,20 @@ void Student::read(ifstream &infile){
         removeHW();
 }
 
+//-------------------------------------------------------------------
+// operator==:
+// Compare operator that tells us if the names of the students are equal.
+//-------------------------------------------------------------------
 bool Student::operator==(Student s){
     if(lastName == s.lastName && firstName == s.firstName)
         return true;
     return false;
 }
 
+//-------------------------------------------------------------------
+// operator>:
+// Compare operator that tells us if the name of the student is greater than another.
+//-------------------------------------------------------------------
 bool Student::operator>(Student s){
     if(lastName > s.lastName)
         return true;
@@ -278,6 +286,10 @@ bool Student::operator>(Student s){
         return false;
 }
 
+//-------------------------------------------------------------------
+// operator<:
+// Compare operator that tells us if the name of the student is greater than another.
+//-------------------------------------------------------------------
 bool Student::operator<(Student s){
     if(lastName < s.lastName)
         return true;

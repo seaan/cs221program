@@ -34,34 +34,40 @@ int main(void){
 
     cout << "This is a basic grade calculator for multiple student objects. An input file will be used for data, and an output file shall be written to." << endl << endl;
     
-    /*cout << "Please type an input file path: " << endl;
+    cout << "Please type an input file path: " << endl;
     cin >> path;
     infile.open(path.c_str());                      //after prompting the user for the path, open the input file using that path*/
-    infile.open("test.txt");
+    if(!infile){
+        cout << "Error opening path, ending program.";
+        return 0;
+    }
     
-    /*cout << "Please type an output file path: " << endl;
+    cout << "Please type an output file path: " << endl;
     cin >> path;
-    outfile.open(path.c_str());*/
-    outfile.open("out.txt");
+    outfile.open(path.c_str());
+    if (!outfile) {
+        cout << "Error opening path, ending program.";
+        return 0;
+    }
     
-    while(!infile.eof()){         //until we've reached the end of the file or the list is full
+    while(!infile.eof()){                           //until we've reached the end of the file or the list is full
         Student s;                                  //we will want to have a new student object for every time this loop is complete, so we can add the next to our list
         s.read(infile);                             //this will read in the details for the student object s from the input file
         
-        list.add(s);                         //after we've read in the details we can store the student in studentlist
+        list.add(s);                                //after we've read in the details we can store the student in studentlist
     }
     
     cout << "Gradebook created." << endl << endl;
     
-    char answer = 'y';
-    while(answer == 'y' || answer == 'Y'){
+    char answer = 'y';                              //input char for user to indicate what they want to do
+    while(answer == 'y' || answer == 'Y'){          //while the user still wants to..
         
         cout << "Would you like to search for a student? Y/N" << endl;;
         cin >> answer;
-        if(answer == 'y' || answer == 'Y') {
+        if(answer == 'y' || answer == 'Y') {        //if the user still wants to..
             cout << "Enter the name of the student: " << endl;
             cin >> first_name >> last_name;
-            list.searchList(first_name, last_name);
+            list.searchList(first_name, last_name); //search the list we made
         }
         
         cout << "Would you like to delete a student? Y/N" << endl;
