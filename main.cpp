@@ -2,11 +2,11 @@
 //***************************************************************************//
 /* FILE:   main.cpp
    AUTHOR: Sean Widmier
-   DATE:   September 14, 2017
+   DATE:   November 7th, 2017
    COURSE: CS221-02, FALL 2017
   
    Description:
-    Main file for Program #2.
+    Main file for Program #4.
 */
 //***************************************************************************//
 

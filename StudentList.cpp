@@ -156,10 +156,19 @@ bool StudentList::searchList(string n_first, string n_last){
     while(q && !(q->item == s) && (q->item < s))    //until we're at the end of the list, or we're at the index of the thing we're searching for, or we're past where the index should be
         q = q->after;
     
-    if(!q){
+    if(!q && student_count > 1){
         cout << "Student not found, printing two nearest: " << endl << endl;
         last->item.print();                         //if our input is past the end of our current list, the two nearest are the first and last indexes
         first->item.print();
+    }
+    else if (!q) {
+        cout << "Student not found, printing nearest: " << endl << endl;
+        if(q->after)
+            q->after->item.print();
+        else if(q->before)
+            q->before->item.print();
+        else
+            cout << "No students found." << endl;
     }
     else if(q->item == s){                          //if our input is actually in the list
         cout << "Student found: " << endl;

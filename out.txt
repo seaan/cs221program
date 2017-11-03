@@ -1,5 +1,9 @@
-FINAL GRADEBOOK for [4] STUDENTS:
-OVERALL CLASS AVERAGE:63.8472
+FINAL GRADEBOOK for [5] STUDENTS:
+OVERALL CLASS AVERAGE:61.0778
+
+AARON, HANK
+Number of Grades: 9 tests, 9 homeworks.
+Average: 50
 
 JONES, ANDRUW
 Number of Grades: 9 tests, 9 homeworks.
