@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Student.h</itemPath>
       <itemPath>StudentList.h</itemPath>
+      <itemPath>StudentTree.h</itemPath>
       <itemPath>utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -17,6 +18,7 @@
                    projectFiles="true">
       <itemPath>Student.cpp</itemPath>
       <itemPath>StudentList.cpp</itemPath>
+      <itemPath>StudentTree.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>utilities.cpp</itemPath>
     </logicalFolder>
@@ -49,6 +51,10 @@
       <item path="StudentList.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StudentList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StudentTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StudentTree.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -84,6 +90,10 @@
       <item path="StudentList.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StudentList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="StudentTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="StudentTree.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

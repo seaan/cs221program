@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Student.o \
 	${OBJECTDIR}/StudentList.o \
+	${OBJECTDIR}/StudentTree.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/utilities.o
 
@@ -74,6 +75,11 @@ ${OBJECTDIR}/StudentList.o: StudentList.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StudentList.o StudentList.cpp
+
+${OBJECTDIR}/StudentTree.o: StudentTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StudentTree.o StudentTree.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
