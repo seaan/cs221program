@@ -60,16 +60,15 @@ int main(void){
 
        cout << "Would you like to input a student? Y/N" << endl;;
        cin >> answer;
-       if(answer == 'y' || answer == 'Y') {        //if the user still wants to.. ***************************TODO
-           cout << "FIX READ" << endl;
+       if(answer == 'y' || answer == 'Y') {        //if the user still wants to..
            Student s;
-           //s.readcin();
+           s.readcin();
            
            tree.insert(s);
        }
    }
     
-    tree.display(cout, 0);                            //print in descending order ******************TODO
+    tree.display(cout, 3);                            //print in descending order
     
     
     cout << endl << "The program has completed. It will now exit." << endl;

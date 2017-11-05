@@ -63,6 +63,7 @@ public:
     void removeHW(void);                                      //removes a homework grade
 
     void read(ifstream &infile);                              //reads in the information for a student object from an input file stream
+    void readcin(void);
 
     bool operator==(Student s);
     bool operator>(Student s);

@@ -34,8 +34,9 @@ class StudentTree {
     TreeNode *findNode(TreeNode*, Student);  // internal utility used to find a ptr to a node
 
     bool      insertNode(TreeNode*&, Student);  // internal recursive utility to find location and insert a new Student in the tree
-    void      deleteNodes(TreeNode *); // internal utility to recursively free nodes
+    void      freeNode(TreeNode *); // internal utility to recursively free nodes
     void      printNodes(ostream &, TreeNode*);
+    void      printNodesReverse(ostream &out, TreeNode *R);
     void preOrder(ostream &, TreeNode*, int, char); // ADDED
     void postOrder(ostream&, TreeNode*); // ADDED temporary
     int       countNodes(TreeNode *);

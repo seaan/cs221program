@@ -259,6 +259,40 @@ void Student::read(ifstream &infile){
         removeHW();
 }
 
+void Student::readcin(void) {
+    string fname, lname;
+    cout << "Please enter the student's first name: ";
+    cin >> fname;
+    cout << "Please enter the student's last name: ";
+    cin >> lname;
+
+    setName(allCaps(fname), allCaps(lname)); //Once we have received the input, we can send the first and last names to be stored using the setName function
+
+    cout << "TESTS" << endl;
+    for (int i = 0; i < MAXGRADES; i++) { //This for loop will prompt the user to input the 10 test grades, or manually stop it themselves.
+        float grade;
+        cout << "Please enter test grade " << i + 1 << ", enter a -1 to stop." << endl;
+        cin >> grade;
+
+        if (grade < 0)
+            break;
+
+        addTest(grade);
+    }
+
+    cout << "HOMEWORK" << endl;
+    for (int i = 0; i < MAXGRADES; i++) {
+        float grade;
+        cout << "Please enter homework grade " << i + 1 << ", enter a -1 to stop." << endl;
+        cin >> grade;
+
+        if (grade < 0)
+            break;
+        addHW(grade);
+    }
+}
+
+
 //-------------------------------------------------------------------
 // operator==:
 // Compare operator that tells us if the names of the students are equal.

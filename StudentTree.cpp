@@ -120,6 +120,21 @@ void StudentTree::printNodes(ostream &out, TreeNode *R) {
 
 //-------------------------------------------------------------------
 // private method - internal utility
+// printNodesReverse: recursive function that prints nodes from the starting 
+// Node R.
+// reverse order Traversal
+//-------------------------------------------------------------------
+
+void StudentTree::printNodesReverse(ostream &out, TreeNode *R) {
+    if (R != NULL) {
+        printNodesReverse(out, R->right);
+        R->item.print();
+        printNodesReverse(out, R->left);
+    }
+}
+
+//-------------------------------------------------------------------
+// private method - internal utility
 // preOrder: recursive function that prints nodes from the starting 
 // Node R.  This print is formatted to show the structure of the 
 // tree, left and right nodes at every level.
@@ -166,7 +181,7 @@ bool StudentTree::insertNode(TreeNode* &R, Student s) {
         return true;
     } else if (s == (R->item)) // node already exists!
         return false;
-    else if (s == (R->item)) // insert the Student into left child tree
+    else if (s < (R->item)) // insert the Student into left child tree
         return insertNode(R->left, s);
     else
         return insertNode(R->right, s); // otherwise, insert into right child tree
@@ -179,8 +194,12 @@ bool StudentTree::insertNode(TreeNode* &R, Student s) {
 // the tree.
 //-------------------------------------------------------------------
 
-void StudentTree::deleteNodes(TreeNode *R) {
-
+void StudentTree::freeNode(TreeNode *R) {
+    if(R != NULL){
+        freeNode(R->left);
+        freeNode(R->right);
+        delete R;
+    }
     // TO BE DONE AS EXERCISE
 }
 
@@ -191,8 +210,8 @@ void StudentTree::deleteNodes(TreeNode *R) {
 //-------------------------------------------------------------------
 
 int StudentTree::countNodes(TreeNode *R) {
-
-    // TO BE DONE AS EXERCISE
+    if (R != NULL)
+        return 1 + countNodes(R->left) + countNodes(R->right);
     return 0;
 }
 
@@ -218,7 +237,7 @@ bool StudentTree::insert(Student s) { // insert a Student into the tree
 //-------------------------------------------------------------------
 
 void StudentTree::free() {
-    deleteNodes(root);
+    freeNode(root);
     root = NULL;
 }
 
@@ -239,9 +258,8 @@ int StudentTree::count() {
 // This calls the recursive method printNodes with the pointer
 // to the root node as the starting point.
 // Use ordering: 
-//    1 - inorder
-//    2 - preorder
-//    3 - postorder
+//    1 - in order
+//    2 - reverse order
 //-------------------------------------------------------------------
 
 void StudentTree::display(ostream &out, int ordering) {
@@ -251,6 +269,9 @@ void StudentTree::display(ostream &out, int ordering) {
             break;
         case 2:
             preOrder(out, root, 0, '>');
+            break;
+        case 3:
+            printNodesReverse(out, root);
             break;
         default:
             postOrder(out, root);
